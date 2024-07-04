@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+import json
+import sys
+
+
+f = sys.stdin
+data = json.load(f)
+print("[")
+lista = data["message"]["ifaces"]
+for i,interface in enumerate(lista):
+      if i:
+         print(",")
+      print("{\"{#INTERFACE}\":\""+interface+"\"}",end="")
+print("\n]")
