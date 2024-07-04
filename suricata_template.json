@@ -1,0 +1,1482 @@
+{
+    "zabbix_export": {
+        "version": "6.0",
+        "date": "2024-07-04T11:07:38Z",
+        "groups": [
+            {
+                "uuid": "cbaa9d26de854172bca755d57d7716f2",
+                "name": "Suricata"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "d16423447d384dbc9f5c8b33bc943f3b",
+                "template": "Suricata-Template",
+                "name": "Suricata-Template",
+                "description": "Suricata Telemetry with Active collection of stats.json (thread mode enabled)",
+                "groups": [
+                    {
+                        "name": "Suricata"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "420bd5c10e0c4c358cac3fe0a6bd3c41",
+                        "name": "Suricata Stats File Monitoring",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "log[{$LOG_FILENAME}]",
+                        "delay": "8s",
+                        "history": "0",
+                        "trends": "0",
+                        "value_type": "LOG",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "94ad4bc4a16542fd8e21255474e5629b",
+                        "name": "Suricata Kernel Errors",
+                        "type": "DEPENDENT",
+                        "key": "suricata.errors",
+                        "delay": "0",
+                        "units": "packets",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.errors"
+                                ]
+                            },
+                            {
+                                "type": "CHANGE_PER_SECOND",
+                                "parameters": [
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "98bff8c6bfee4c74913eb4fb19979f6b",
+                        "name": "Suricata Kernel Drops",
+                        "type": "DEPENDENT",
+                        "key": "suricata.kernel_drops",
+                        "delay": "0",
+                        "units": "packets",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.kernel_drops"
+                                ]
+                            },
+                            {
+                                "type": "CHANGE_PER_SECOND",
+                                "parameters": [
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "5623d3cbacab4d49a25237e76175145a",
+                        "name": "Suricata Kernel Packets",
+                        "type": "DEPENDENT",
+                        "key": "suricata.kernel_packets",
+                        "delay": "0",
+                        "units": "packets",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.kernel_packets"
+                                ]
+                            },
+                            {
+                                "type": "CHANGE_PER_SECOND",
+                                "parameters": [
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "62c0ae55764e412f9082ac258efb3d05",
+                        "name": "Suricata AF-Packet Busy Loop AVG",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.capture.afpacket.busy_loop_avg",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.afpacket.busy_loop_avg"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e3bb76d475dd4ac281ea84189f68db35",
+                        "name": "Suricata AF-Packet Poll",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.capture.afpacket.polls",
+                        "delay": "0",
+                        "units": "poll",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.afpacket.polls"
+                                ]
+                            },
+                            {
+                                "type": "CHANGE_PER_SECOND",
+                                "parameters": [
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f092d6c2473f45b69a838b33aea29829",
+                        "name": "Suricata AF-Packet Poll Data",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.capture.afpacket.poll_data",
+                        "delay": "0",
+                        "units": "poll",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.afpacket.poll_data"
+                                ]
+                            },
+                            {
+                                "type": "CHANGE_PER_SECOND",
+                                "parameters": [
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "9aae8de3a16c4594a9771d2b63ab215e",
+                        "name": "Suricata AF-Packet Poll Errors",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.capture.afpacket.poll_errors",
+                        "delay": "0",
+                        "units": "poll",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.afpacket.poll_errors"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "7ecf48b3b99b4ff1a66fc78141612f95",
+                        "name": "Suricata AF-Packet Poll Signal",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.capture.afpacket.poll_signal",
+                        "delay": "0",
+                        "units": "signal",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.afpacket.poll_signal"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "82ae5bd256fc4a2e89dcecafdb05c188",
+                        "name": "Suricata AF-Packet Polls Timeouts",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.capture.afpacket.poll_timeout",
+                        "delay": "0",
+                        "units": "poll",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.afpacket.poll_timeout"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "80cfb87acf3f41ecbce03117e7380c32",
+                        "name": "Suricata AF-Packet Send Errors",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.capture.afpacket.send_errors",
+                        "delay": "0",
+                        "units": "error",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.capture.afpacket.send_errors"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "cfc14b6069de448d89205d66de454597",
+                        "name": "Suricata Active Flows",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.flow.active",
+                        "delay": "0",
+                        "units": "flows",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.flow.active"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "18354f75de1f41ada41f1c0e34011822",
+                        "name": "Suricata Flow Emergency Mode Entered",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.flow.emerg_mode_entered",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.flow.emerg_mode_entered"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "326a4173383942f296f4f80c20099238",
+                        "name": "Suricata Flow Emergency Mode Over",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.flow.emerg_mode_over",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.flow.emerg_mode_over"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "06815411dbe4491687274978c713cb1b",
+                        "name": "Suricata Flow Memory Usage",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.flow.memuse",
+                        "delay": "0",
+                        "units": "bytes",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.flow.memuse"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c46369a4e66349c3bc702c1442768921",
+                        "name": "Suricata Memcap Pressure",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.memcap_pressure",
+                        "delay": "0",
+                        "units": "%",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.memcap_pressure"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "5213f9bb424b4f7f836c4db97acebff4",
+                        "name": "Suricata Memcap Pressure Max",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.memcap_pressure_max",
+                        "delay": "0",
+                        "units": "%",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.memcap_pressure_max"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c4693c8516704f98a29c7c54d63d641a",
+                        "name": "Suricata TCP Memory Usage",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.tcp.memuse",
+                        "delay": "0",
+                        "units": "bytes",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.tcp.memuse"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4ec8c357848e40f5a38ee0bd286c2148",
+                        "name": "Suricata TCP Reassembly Memory Usage",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.tcp.reassembly_memuse",
+                        "delay": "0",
+                        "units": "bytes",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.tcp.reassembly_memuse"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "742e9fb2aeb5462282a119ee5dedff52",
+                        "name": "Suricata TCP Segment Memcap Drop",
+                        "type": "DEPENDENT",
+                        "key": "suricata.stats.tcp.segment_memcap_drop",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.tcp.segment_memcap_drop"
+                                ]
+                            },
+                            {
+                                "type": "CHANGE_PER_SECOND",
+                                "parameters": [
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "d46bb20dda3a44df90bd005fc1a816df",
+                        "name": "Suricata Uptime",
+                        "type": "DEPENDENT",
+                        "key": "suricata.uptime",
+                        "delay": "0",
+                        "units": "s",
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.stats.uptime"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "log[{$LOG_FILENAME}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Suricata"
+                            },
+                            {
+                                "tag": "Type",
+                                "value": "Stats"
+                            }
+                        ]
+                    }
+                ],
+                "discovery_rules": [
+                    {
+                        "uuid": "1c91ae0071064659be7ff0440435d223",
+                        "name": "Suricata Thread Discovery",
+                        "key": "suricata.discovery.threads[{$LOG_FILENAME}]",
+                        "lifetime": "1d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "415403db9b574801b82d54eaefada344",
+                                "name": "Suricata {#THREAD} Capture Kernel Packets Dropped",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.capture.kernel_drops[{#THREAD}]",
+                                "delay": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].capture.kernel_drops"
+                                        ]
+                                    },
+                                    {
+                                        "type": "CHANGE_PER_SECOND",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "19cdae9e80fd46ca8a16ab23cd035ac5",
+                                "name": "Suricata {#THREAD} Capture Kernel Packets",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.capture.kernel_packets[{#THREAD}]",
+                                "delay": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].capture.kernel_packets"
+                                        ]
+                                    },
+                                    {
+                                        "type": "CHANGE_PER_SECOND",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "ac15f75805b94dff8e6ff64cedaffd89",
+                                "name": "Suricata {#THREAD} Active Flows",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.flow.active[{#THREAD}]",
+                                "delay": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].flow.active"
+                                        ]
+                                    },
+                                    {
+                                        "type": "SIMPLE_CHANGE",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "3eaf6674af474579ab8493bbcd1820fb",
+                                "name": "Suricata {#THREAD} TCP Flows",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.flow.tcp[{#THREAD}]",
+                                "delay": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].flow.tcp"
+                                        ]
+                                    },
+                                    {
+                                        "type": "SIMPLE_CHANGE",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "1a52353bd71844c3abb59b4f60bc8fa1",
+                                "name": "Suricata {#THREAD} UDP Flows",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.flow.udp[{#THREAD}]",
+                                "delay": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].flow.udp"
+                                        ]
+                                    },
+                                    {
+                                        "type": "SIMPLE_CHANGE",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "c8da4357d862450aa42304884ae806be",
+                                "name": "Suricata {#THREAD} TCP Active Sessions",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.tcp.active_sessions[{#THREAD}]",
+                                "delay": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].tcp.active_sessions"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "4ba48dfe873d45779db4b9428d6822c2",
+                                "name": "Suricata {#THREAD} TCP Packet on wrong thread",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.tcp.pkt_on_wrong_thread[{#THREAD}]",
+                                "delay": "0",
+                                "units": "packets",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].tcp.pkt_on_wrong_thread"
+                                        ]
+                                    },
+                                    {
+                                        "type": "SIMPLE_CHANGE",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "f822eee9452e4cedbc34db9bae862230",
+                                "name": "Suricata {#THREAD} TCP Reassembly Gap",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.tcp.reassembly_gap[{#THREAD}]",
+                                "delay": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].tcp.reassembly_gap"
+                                        ]
+                                    },
+                                    {
+                                        "type": "SIMPLE_CHANGE",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "f906512969544f6a9228d6b2aeeb793f",
+                                "name": "Suricata {#THREAD} TCP Segment Memcap Drop",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.tcp.segment_memcap_drop[{#THREAD}]",
+                                "delay": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].tcp.segment_memcap_drop"
+                                        ]
+                                    },
+                                    {
+                                        "type": "SIMPLE_CHANGE",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "303627beadea436f983d99570731ba70",
+                                "name": "Suricata {#THREAD} TCP Session Memcap Drop",
+                                "type": "DEPENDENT",
+                                "key": "suricata.stats.threads.thread.tcp.ssn_memcap_drop[{#THREAD}]",
+                                "delay": "0",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.stats.threads.[\"{#THREAD}\"].tcp.ssn_memcap_drop"
+                                        ]
+                                    },
+                                    {
+                                        "type": "SIMPLE_CHANGE",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "log[{$LOG_FILENAME}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            }
+                        ],
+                        "graph_prototypes": [
+                            {
+                                "uuid": "0514249d40314cb995e04ee2bb031812",
+                                "name": "Suricata Thread {#THREAD} Flows",
+                                "graph_items": [
+                                    {
+                                        "color": "199C0D",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Suricata-Template",
+                                            "key": "suricata.stats.threads.thread.flow.active[{#THREAD}]"
+                                        }
+                                    },
+                                    {
+                                        "sortorder": "1",
+                                        "color": "F63100",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Suricata-Template",
+                                            "key": "suricata.stats.threads.thread.flow.tcp[{#THREAD}]"
+                                        }
+                                    },
+                                    {
+                                        "sortorder": "2",
+                                        "color": "2774A4",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Suricata-Template",
+                                            "key": "suricata.stats.threads.thread.flow.udp[{#THREAD}]"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "66ffe29b2e554ce5b71d06a6988103b9",
+                                "name": "Suricata {#THREAD} Kernel Packets Statistics",
+                                "graph_items": [
+                                    {
+                                        "color": "199C0D",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Suricata-Template",
+                                            "key": "suricata.stats.threads.thread.capture.kernel_packets[{#THREAD}]"
+                                        }
+                                    },
+                                    {
+                                        "sortorder": "1",
+                                        "color": "F63100",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Suricata-Template",
+                                            "key": "suricata.stats.threads.thread.capture.kernel_drops[{#THREAD}]"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "831ddbb5f50c4309aa2ecb35e124fdf2",
+                                "name": "Suricata {#THREAD} Memcap Drop",
+                                "graph_items": [
+                                    {
+                                        "color": "FF0000",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Suricata-Template",
+                                            "key": "suricata.stats.threads.thread.tcp.segment_memcap_drop[{#THREAD}]"
+                                        }
+                                    },
+                                    {
+                                        "sortorder": "1",
+                                        "color": "F9A825",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Suricata-Template",
+                                            "key": "suricata.stats.threads.thread.tcp.ssn_memcap_drop[{#THREAD}]"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "e94c4b0d10cf4e1db9f8a281f9561e4e",
+                                "name": "Suricata {#THREAD} TCP Reassembly Gap",
+                                "graph_items": [
+                                    {
+                                        "color": "FF0000",
+                                        "calc_fnc": "ALL",
+                                        "item": {
+                                            "host": "Suricata-Template",
+                                            "key": "suricata.stats.threads.thread.tcp.reassembly_gap[{#THREAD}]"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c753b79e24894618bde0996b302429c7",
+                        "name": "Suricata Interface Discovery",
+                        "key": "suricata.iface-list",
+                        "delay": "1d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "12594ee19c324e69a7a9d85091a20401",
+                                "name": "Suricata Capturing Interface {#INTERFACE} - Receiving",
+                                "key": "net.if.in[{#INTERFACE}]",
+                                "delay": "8s",
+                                "units": "bps",
+                                "preprocessing": [
+                                    {
+                                        "type": "CHANGE_PER_SECOND",
+                                        "parameters": [
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Suricata"
+                                    },
+                                    {
+                                        "tag": "Type",
+                                        "value": "Stats"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    {
+                        "tag": "Application",
+                        "value": "Suricata"
+                    }
+                ],
+                "macros": [
+                    {
+                        "macro": "{$LOG_FILENAME}",
+                        "value": "/var/log/suricata/stats_t.json",
+                        "description": "Suricata Eve.log that contains only the stats (FullPath)"
+                    }
+                ],
+                "dashboards": [
+                    {
+                        "uuid": "c096f92373d64312b415605f9e01e049",
+                        "name": "Suricata Dashboard",
+                        "pages": [
+                            {
+                                "widgets": [
+                                    {
+                                        "type": "ITEM",
+                                        "width": "8",
+                                        "height": "3",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "show",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "type": "ITEM",
+                                                "name": "itemid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "key": "suricata.uptime"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "GRAPH_PROTOTYPE",
+                                        "y": "14",
+                                        "width": "24",
+                                        "height": "8",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "rows",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "type": "GRAPH_PROTOTYPE",
+                                                "name": "graphid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "name": "Suricata Thread {#THREAD} Flows"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "GRAPH_PROTOTYPE",
+                                        "y": "22",
+                                        "width": "24",
+                                        "height": "8",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "rows",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "type": "GRAPH_PROTOTYPE",
+                                                "name": "graphid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "name": "Suricata {#THREAD} Kernel Packets Statistics"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "GRAPH_PROTOTYPE",
+                                        "y": "30",
+                                        "width": "24",
+                                        "height": "8",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "rows",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "type": "GRAPH_PROTOTYPE",
+                                                "name": "graphid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "name": "Suricata {#THREAD} Memcap Drop"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "ITEM",
+                                        "x": "8",
+                                        "width": "6",
+                                        "height": "3",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "show",
+                                                "value": "4"
+                                            },
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "show",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "type": "ITEM",
+                                                "name": "itemid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "key": "suricata.stats.flow.active"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "ITEM",
+                                        "x": "14",
+                                        "width": "3",
+                                        "height": "3",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "show",
+                                                "value": "4"
+                                            },
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "show",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "type": "ITEM",
+                                                "name": "itemid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "key": "suricata.stats.memcap_pressure"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "ITEM",
+                                        "x": "17",
+                                        "width": "3",
+                                        "height": "3",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "show",
+                                                "value": "4"
+                                            },
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "show",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "type": "ITEM",
+                                                "name": "itemid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "key": "suricata.stats.memcap_pressure_max"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "GRAPH_CLASSIC",
+                                        "y": "9",
+                                        "width": "24",
+                                        "height": "5",
+                                        "fields": [
+                                            {
+                                                "type": "GRAPH",
+                                                "name": "graphid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "name": "Suricata Memcap Pressure"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "GRAPH_PROTOTYPE",
+                                        "y": "38",
+                                        "width": "24",
+                                        "height": "8",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "rows",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "type": "GRAPH_PROTOTYPE",
+                                                "name": "graphid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "name": "Suricata {#THREAD} TCP Reassembly Gap"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "GRAPH_CLASSIC",
+                                        "y": "46",
+                                        "width": "24",
+                                        "height": "8",
+                                        "fields": [
+                                            {
+                                                "type": "GRAPH",
+                                                "name": "graphid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "name": "Suricata TCP Memory Usage"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "ITEM",
+                                        "x": "20",
+                                        "width": "4",
+                                        "height": "3",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "show",
+                                                "value": "4"
+                                            },
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "show",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "type": "ITEM",
+                                                "name": "itemid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "key": "suricata.stats.flow.memuse"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "GRAPH_PROTOTYPE",
+                                        "y": "3",
+                                        "width": "24",
+                                        "height": "6",
+                                        "fields": [
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "columns",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "type": "INTEGER",
+                                                "name": "source_type",
+                                                "value": "3"
+                                            },
+                                            {
+                                                "type": "ITEM_PROTOTYPE",
+                                                "name": "itemid",
+                                                "value": {
+                                                    "host": "Suricata-Template",
+                                                    "key": "net.if.in[{#INTERFACE}]"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "graphs": [
+            {
+                "uuid": "9d8a630116fc417894cfe40125400110",
+                "name": "Suricata Memcap Pressure",
+                "graph_items": [
+                    {
+                        "drawtype": "FILLED_REGION",
+                        "color": "199C0D",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "Suricata-Template",
+                            "key": "suricata.stats.memcap_pressure"
+                        }
+                    },
+                    {
+                        "sortorder": "1",
+                        "color": "F63100",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "Suricata-Template",
+                            "key": "suricata.stats.memcap_pressure_max"
+                        }
+                    },
+                    {
+                        "sortorder": "2",
+                        "color": "FBC02D",
+                        "yaxisside": "RIGHT",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "Suricata-Template",
+                            "key": "suricata.stats.flow.active"
+                        }
+                    }
+                ]
+            },
+            {
+                "uuid": "8d0a474332dd45aa9f3b2ef3782cbdaf",
+                "name": "Suricata TCP Memory Usage",
+                "graph_items": [
+                    {
+                        "color": "199C0D",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "Suricata-Template",
+                            "key": "suricata.stats.tcp.memuse"
+                        }
+                    },
+                    {
+                        "sortorder": "1",
+                        "color": "0040FF",
+                        "yaxisside": "RIGHT",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "Suricata-Template",
+                            "key": "suricata.stats.tcp.reassembly_memuse"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
