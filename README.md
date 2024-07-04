@@ -50,7 +50,7 @@ then give execute permissions (`chmod +x`) at the 2 files
 
 > The filename you enter above must also be set to the Zabbix `Suricata-Template` UserMacro `{$LOG_FILENAME}`
 
-4. Add to /etc/zabbix/zabbix_agent.d/Userparameters.conf
+4. Add to /etc/zabbix/zabbix_agent2.d/UserParameters.conf
 
 ```
 UserParameter=suricata.iface-list,suricatasc -c "iface-list" /var/run/suricata/suricata-command.socket | convert2zabbix
