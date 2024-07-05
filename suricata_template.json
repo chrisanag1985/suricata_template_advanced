@@ -1,7 +1,7 @@
 {
     "zabbix_export": {
         "version": "6.0",
-        "date": "2024-07-04T11:07:38Z",
+        "date": "2024-07-05T04:16:01Z",
         "groups": [
             {
                 "uuid": "cbaa9d26de854172bca755d57d7716f2",
@@ -499,6 +499,14 @@
                             {
                                 "tag": "Type",
                                 "value": "Stats"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "d4225f2a7cd04b558dded8a176881609",
+                                "expression": "last(/Suricata-Template/suricata.stats.memcap_pressure,#2)>=80",
+                                "name": "Suricata Too High Memcap Pressure",
+                                "priority": "AVERAGE"
                             }
                         ]
                     },
