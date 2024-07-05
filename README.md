@@ -26,7 +26,7 @@ It collects the logs from the Statistics JSON file and sends them (Zabbix Active
 2. Copy the files to the `/usr/local/bin/` (or anywhere in the `$PATH`)
 
 - `convert2zabbix` 
-- `convert_threads_2zabbix` ( Detects Workers with LLD )
+- `convert_threads_2zabbix` 
 
 then give execute permissions (`chmod +x`) at the 2 files
 
@@ -57,7 +57,9 @@ UserParameter=suricata.discovery.threads[*],tail -1 $1 | convert_threads_2zabbix
 ```
 
 Explanation:
+
 1st line: Detects Suricata Capturing Interfaces with LLD 
+
 2nd line: Detects Workers with LLD 
 
 
