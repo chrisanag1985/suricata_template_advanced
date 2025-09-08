@@ -24,7 +24,7 @@
                         "uuid": "420bd5c10e0c4c358cac3fe0a6bd3c41",
                         "name": "Suricata Stats File Monitoring",
                         "type": "ZABBIX_ACTIVE",
-                        "key": "log[{$LOG_FILENAME}]",
+                        "key": "tail.file[{$LOG_FILENAME}]",
                         "delay": "8s",
                         "history": "0",
                         "trends": "0",
