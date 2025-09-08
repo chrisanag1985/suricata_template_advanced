@@ -54,6 +54,7 @@ then give execute permissions (`chmod +x`) at the 2 files
 ```
 UserParameter=suricata.iface-list,suricatasc -c "iface-list" /var/run/suricata/suricata-command.socket | convert2zabbix
 UserParameter=suricata.discovery.threads[*],tail -1 $1 | convert_threads_2zabbix
+UserParameter=tail.file[*],tail -1 $1
 ```
 
 Explanation:
